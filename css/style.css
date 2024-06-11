@@ -1,0 +1,81 @@
+﻿
+.section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(206, 206, 206);
+}
+
+
+.section2 {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(206, 206, 206);
+}
+
+
+.block-panel-auth {
+    position: relative;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.header-panel {
+    background-color: #45698b;
+    height: 40px;
+    border-radius: 15px 15px 0 0;
+}
+
+.header-panel > h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    position: absolute;
+    width: 100%;
+    line-height: 40px;
+    top: 0;
+}
+
+.main-block-auth {
+    padding: 30px 30px 20px 30px;
+}
+
+#password {
+    margin-top: 5px;
+}
+.button-auth {
+    margin-top: 15px;
+    background-color: #45698b;
+    color: white;
+    padding: 5px 20px 5px 20px;
+}
+
+.button-auth:hover {
+    background-color: #7c8894;
+}
+
+a { 
+    text-decoration: none;
+    color: white;
+}
+
+.dbmessage {
+    width: 100%;
+    color: #800909;
+}
+
+.dbselect {
+    margin-top: 5px;
+}
+
+.vh {
+    height: 100vh;
+    width: 100%;
+}
