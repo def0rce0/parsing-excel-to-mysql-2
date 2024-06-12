@@ -19,9 +19,8 @@ require_once 'header.php'; ?>
                         <input class="form-control" onchange="inputfileChange()" type="file" id="formFile" name="file" accept=".xls" required>
                     </div>
                 </form>
-        </div>
+            </div>
 		</div>
 	</div>
-    
 </body>
 </html>

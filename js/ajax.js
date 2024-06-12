@@ -3,7 +3,7 @@ function DbSave() {
         let dbDataForm = $('.dbData');
         let form = dbDataForm.serializeJSON();
         $.ajax({
-            url: 'function/configDB.php',
+            url: 'function/configDB',
             dataType: 'JSON',
             type: 'post',
             data: {
@@ -25,7 +25,7 @@ function DbSave() {
 
 function checkdbOnLoad() {
     $.ajax({
-        url: 'function/configDB.php',
+        url: 'function/configDB',
         dataType: 'JSON',
         type: 'post',
         data: {
