@@ -1,33 +1,37 @@
 <? 
 class Db {
 
-    private $host, $username, $password, $dbname;
-    function __construct($host,$username,$password,$dbname)
-    {
-        $this->host = $host;
-        $this->username = $username;
-        $this->password = $password;
-        $this->dbname = $dbname;
-    }
-
-    private function checkConnect() {
-        $xmlFile = './config/dbData.xml';
+    public function ConnectDB() {
+        $xmlFile = '../config/dbData.xml';
         $xml = simplexml_load_file($xmlFile);
 
         $host = $xml->host;
         $username = $xml->user;
         $password = $xml->password;
         $database = $xml->dbname;
-
-        $connect = new mysqli($host,$username,$password,$database);
-        if ($connect->connect_error) {
-                return false; 
-            }
-                else 
-            { 
-                return $connect; 
-            };
+        try {
+            $connect =@new mysqli($host,$username,$password,$database);
+            return $connect;
+        }
+        catch (mysqli_sql_exception $e) {
+            return array('error' => true, 'msg' => $e->getMessage());
+        }
     }
 
-
+    public function dbSave($dbData) {
+        $xmlFile = '../config/dbData.xml';
+        $xml = simplexml_load_file($xmlFile);
+        $xml->host = $dbData['host'];
+        $xml->user = $dbData['user'];
+        $xml->password = $dbData['password'];
+        $xml->dbname = $dbData['database'];
+        $xml->asXML($xmlFile);
+        $connection = $this->ConnectDB();
+        if(is_array($connection)) {
+            return array('connect' => 0, 'error' => $connection['msg']); 
+        } else { 
+            return array('connect' => 1);
+        };
+    }
+    
 }

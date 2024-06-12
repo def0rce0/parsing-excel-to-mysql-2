@@ -8,9 +8,9 @@ require_once 'header.php'; ?>
             </div>
             <div class="main-block-auth">
             <label id="dbmessage" class="form-label text-center dbmessage">Полученные данные для авторизации в БД ошибочны.</label>
-                <form action="" method="post">
+                <form action="function/saveDB.php" class="dbData" method="post">
                     <input id="password" type="text" class="form-control" placeholder="Хост" name="host" id="login">
-                    <input id="password" type="text" class="form-control" placeholder="Пользователь" name="username" id="password">
+                    <input id="password" type="text" class="form-control" placeholder="Пользователь" name="user" id="password">
                     <input id="password" type="text" class="form-control" placeholder="Пароль" name="password" id="login">
                     <input id="password" type="text" class="form-control" placeholder="Название БД" name="database" id="password">
                     <div class="buttons d-flex justify-content-center">
