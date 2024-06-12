@@ -3,6 +3,7 @@ require_once 'header.php'; ?>
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
+        checkFile();
         $("#settingBlock").css("display", "none");
     });
 </script>
@@ -26,7 +27,7 @@ require_once 'header.php'; ?>
                 <h3>Excel to MySQL. Parsing setting.</h3>
             </div>
             <div class="main-block-auth" style="width:800px">
-                <form action="" method="post">
+                <form action="final" method="post">
                     <div class="row justify-content-center">
                         <div class="col-6 text-center">
                         <input id="password" type="text" class="form-control" placeholder="Название таблицы" name="dbname" id="login" required>

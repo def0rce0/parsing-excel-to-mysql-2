@@ -71,6 +71,25 @@ function inputfileChange() {
         $('input[type="file"]').val('');
     }
 }
+
+function checkFile() {
+    $.ajax({
+        url: 'function/checkFile',
+        dataType: 'JSON',
+        type: 'post',
+        success: function(response) {
+            if (Array.isArray(response)) {
+                settingForm(response);
+            } else {
+                console.log(response);
+            }
+        },
+        error: function(response) {
+            console.log(response);
+        }
+    });
+}
+
 function settingForm(response) {
     $("#columns").empty();
     $("#OnOff").empty();

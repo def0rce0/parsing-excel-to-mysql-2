@@ -1,8 +1,5 @@
 <?php
 require_once 'classes/Parsesetting.php';
-require_once '../vendor/autoload.php';
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 
 $file = $_FILES['file'];
