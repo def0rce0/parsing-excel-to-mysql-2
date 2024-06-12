@@ -20,7 +20,6 @@ function DbSave() {
                     $("#nextbtn").prop("disabled", false);
                 }
             }
-            //error: function(jqXHR, textStatus, errorThrown,response) { console.log(jqXHR,textStatus,errorThrown,response); }
     });
 }
 
@@ -33,9 +32,8 @@ function checkdbOnLoad() {
             func: 'checkDB',
         },
         success: function(response) {
-            console.log(response);
             if (response.error) {
-                $("#dbmessage").css("color", "#800909").text("Данные в указанные в конфиге ошибочны.");
+                $("#dbmessage").css("color", "#800909").text("Данные указанные в конфиге ошибочны.");
                 $("#nextbtn").prop("disabled", true);
             } else {
                 $("#dbmessage").css("color", "#16b458").text("Подключение к БД активно. Ввод данных не требуется.");
@@ -43,4 +41,35 @@ function checkdbOnLoad() {
             }
         }
     });
+}
+
+function inputfileChange() {
+    inputFile = document.querySelector('input[type="file"]');
+    file = inputFile.files[0];
+    fileName = file.name; 
+    filePath = fileName.split('.').pop();
+    if(filePath == 'xls') {
+        let form = $('.uploadfile');
+        let formData = new FormData(form[0]);
+        $.ajax({
+            url: 'function/parseSetting',
+            dataType: 'JSON',
+            type: 'post',
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(response) {
+                console.log('error');
+            }
+        });
+    }
+    else {
+        alert("Выберите файл в формате .xls");
+        $('input[type="file"]').val('');
+    }
+    
+
 }
