@@ -2,8 +2,6 @@
 require_once '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Reader\Xls;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Parsesetting {
 
     public function parseColumn() {

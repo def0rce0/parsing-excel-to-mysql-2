@@ -21,7 +21,7 @@ require_once 'header.php'; ?>
                 </form>
             </div>
 		</div>
-        <div class="block-panel-auth" id="settingBlock">
+        <div class="block-panel-auth" id="settingBlock" style="margin-top: 50px;">
             <div class="header-panel text-center">
                 <h3>Excel to MySQL. Parsing setting.</h3>
             </div>

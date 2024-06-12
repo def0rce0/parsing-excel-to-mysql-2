@@ -70,10 +70,12 @@ function inputfileChange() {
         alert("Выберите файл в формате .xls");
         $('input[type="file"]').val('');
     }
-    
-
 }
 function settingForm(response) {
+    $("#columns").empty();
+    $("#OnOff").empty();
+    $("#numberColumns").empty();
+    $("#search").empty();
     const columnsDiv = $("#columns");
     response.forEach((cell, index) => {
         const columnInputDiv = $("<div>").addClass("col-3 text-center");
