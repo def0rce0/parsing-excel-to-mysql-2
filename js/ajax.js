@@ -52,17 +52,17 @@ function inputfileChange() {
         let form = $('.uploadfile');
         let formData = new FormData(form[0]);
         $.ajax({
-            url: 'function/parseSetting',
+            url: 'function/settingParse',
             dataType: 'JSON',
             type: 'post',
             contentType: false,
             processData: false,
             data: formData,
             success: function(response) {
-                console.log(response);
+                    settingForm(response);
             },
             error: function(response) {
-                console.log('error');
+                console.log(response);
             }
         });
     }
@@ -72,4 +72,77 @@ function inputfileChange() {
     }
     
 
+}
+function settingForm(response) {
+    const columnsDiv = $("#columns");
+    response.forEach((cell, index) => {
+        const columnInputDiv = $("<div>").addClass("col-3 text-center");
+        const columnInput = $("<input>")
+            .attr("type", "text")
+            .addClass("form-control")
+            .attr("placeholder", "Столбцы")
+            .attr("name", "columns[]")
+            .attr("id", "login")
+            .val(cell)
+            .prop("required", true);
+        columnInputDiv.append(columnInput);
+        columnsDiv.append(columnInputDiv);
+    });
+
+    const columnsDivOnOff = $("#OnOff");
+
+    response.forEach((cell, index) => {
+    const columnSelectDiv = $("<div>").addClass("col-3 text-center");
+    const columnSelect = $("<select>")
+        .addClass("form-select form-select-sm")
+        .attr("name", "OnOff[]")
+        .attr("aria-label", ".form-select-sm example");
+
+    const option1 = $("<option>")
+        .attr("value", "0")
+        .text("Добавлять")
+        .prop("selected", true);
+
+    const option2 = $("<option>")
+        .attr("value", "1")
+        .text("Не добавлять столбец");
+
+    columnSelect.append(option1);
+    columnSelect.append(option2);
+
+    columnSelectDiv.append(columnSelect);
+    columnsDivOnOff.append(columnSelectDiv);
+    });
+
+    const columnsDivNumber = $("#numberColumns");
+
+    response.forEach((cell, index) => {
+    const columnInputDiv = $("<div>").addClass("col-3 text-center");
+    const columnInput = $("<input>")
+        .attr("type", "text")
+        .addClass("form-control")
+        .attr("placeholder", "Номер столбца")
+        .attr("name", "numberColumns[]")
+        .attr("id", "login")
+        .val(index + 1)
+        .prop("required", true);
+
+    columnInputDiv.append(columnInput);
+    columnsDivNumber.append(columnInputDiv);
+    });
+
+    const columnsDivSearch = $("#search");
+
+    response.forEach((cell, index) => {
+    const searchInputDiv = $("<div>").addClass("col-3 text-center");
+    const searchInput = $("<input>")
+        .attr("type", "text")
+        .addClass("form-control")
+        .attr("name", "search[]")
+        .attr("id", "login");
+
+    searchInputDiv.append(searchInput);
+    columnsDivSearch.append(searchInputDiv);
+    });
+    $("#settingBlock").css("display", "block");
 }
