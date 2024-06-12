@@ -48,12 +48,9 @@ class ParseData {
                         unset($dataParser[$key]);
                         continue;
                     }
-                } elseif (strpos($subString, '-') !== false) {
-                    list($start, $end) = explode('-', $subString);
-                    $startCode = (int) substr($start, 1);
-                    $endCode = (int) substr($end, 1);
-                    $code = (int) substr($value['A'], 1);
-                    if ($code < $startCode || $code > $endCode) {
+                } elseif (strpos($searchParams['A'], '-') !== false) {
+                    list($min, $max) = explode('-', $searchParams['A']);
+                    if ($value['A'] < $min || $value['A'] > $max) {
                         unset($dataParser[$key]);
                         continue;
                     }

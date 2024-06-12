@@ -13,8 +13,10 @@ require_once 'function/parsingData.php';?>
                             <button type="submit" class="btn btn-primary button-auth"><a href="/parsing">Изменить настройки парсера</a></button>
                         </div>
                 <div class="row justify-content-center">
-                        <?php $rows = array_keys($dataTable[0]);
-                        if(is_array($dataTable)) {
+                        <?php 
+                        if(is_array($dataTable)) 
+                        {
+                            $rows = array_keys($dataTable[0]);
                         ?>
                         
                         <table border="2" class="text-center" style="width: 800px;">
