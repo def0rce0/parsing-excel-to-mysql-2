@@ -2,7 +2,7 @@ function DbSave() {
         $("#nextbtn").prop("disabled", true);
         let dbDataForm = $('.dbData');
         $.ajax({
-            url: 'function/saveDB.php',
+            url: 'function/configDB.php',
             dataType:'JSON',
             type: 'post',
             data: dbDataForm.serialize(),
