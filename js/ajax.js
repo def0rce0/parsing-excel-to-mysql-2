@@ -1,19 +1,18 @@
 function DbSave() {
-        let form = $('.dbData');
+        $("#nextbtn").prop("disabled", true);
+        let dbDataForm = $('.dbData');
         $.ajax({
             url: 'function/saveDB.php',
             dataType:'JSON',
             type: 'post',
-            data: form.serialize(),
-            success: function(data) {
-                if (data.error) {
-                    var element = document.getElementById("dbmessage");
-                    element.style.color = "#800909";
-                    element.textContent = "Неверные данные для подключения к БД."
+            data: dbDataForm.serialize(),
+            success: function(response) {
+                if (response.error) {
+                    $("#dbmessage").css("color", "#800909").text("Неверные данные для подключения к БД.");
+                    $("#nextbtn").prop("disabled", true);
                 } else {
-                    var element = document.getElementById("dbmessage");
-                    element.style.color = "#16b458";
-                    element.textContent = "Подключение к БД активно."
+                    $("#dbmessage").css("color", "#16b458").text("Подключение к БД активно.");
+                    $("#nextbtn").prop("disabled", false);
                 }
             }
     });

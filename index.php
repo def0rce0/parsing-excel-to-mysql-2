@@ -15,7 +15,7 @@ require_once 'header.php'; ?>
                     <input id="password" type="text" class="form-control" placeholder="Название БД" name="database" id="password">
                     <div class="buttons d-flex justify-content-center">
                         <button type="button" onclick="DbSave()" class="dbData btn btn-primary button-auth" class="btn btn-primary button-auth">Сохранить</button>
-                        <button type="button" class="btn btn-primary button-auth" style="margin-left:15px;" disabled><a href="chinazez">Подтвердить</a></button>
+                        <button type="button" class="btn btn-primary button-auth" id="nextbtn" style="margin-left:15px;" disabled><a href="chinazez">Подтвердить</a></button>
                     </div>
                 </form>
             </div>
