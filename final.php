@@ -9,8 +9,7 @@ require_once 'function/parsingData.php';?>
             </div>
             <div class="main-block-auth" style="width: 900px;">
                         <div class="buttons d-flex justify-content-center" style="margin-bottom:15px;">
-                            <button type="submit" class="btn btn-primary button-auth"><a href="/parse">Загрузить новый файл</a></button>
-                            <button type="submit" class="btn btn-primary button-auth"><a href="/parsing">Изменить настройки парсера</a></button>
+                            <button type="button" class="btn btn-primary button-auth"><a href="setting">Загрузить новый файл или изменить настройки</a></button>
                         </div>
                 <div class="row justify-content-center">
                         <?php 
