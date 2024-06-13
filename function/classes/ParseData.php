@@ -12,7 +12,7 @@ class ParseData {
         $worksheet = $spreadsheet->getActiveSheet();
 
         $data = [];
-
+        //получение данных из excel в ассоциативный массив. 
         foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             $sheetName = $worksheet->getTitle();
             $data[$sheetName] = [];
@@ -25,7 +25,7 @@ class ParseData {
                 $data[$sheetName][] = $rowData;
             }
         }
-
+        //определение параметров для поиска
         $searchParams = array(
             'A' => $search[0], 
             'B' => $search[1], 
@@ -120,7 +120,7 @@ class ParseData {
             foreach($dataParser as $key){
                 $filterParse[] = $key;
             }
-    
+            //ограничение по выводимым строкам
             if($quantity == 0) {
                 $outPutArray = array_slice($filterParse,1);
                 return $outPutArray;

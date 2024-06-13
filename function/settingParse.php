@@ -1,7 +1,7 @@
 <?php
 require_once 'classes/Parsesetting.php';
 
-
+//сохранение загруженного файла
 $file = $_FILES['file'];
 $fileName = 'parser.xls';
 $filePath = '../config/'. $fileName;

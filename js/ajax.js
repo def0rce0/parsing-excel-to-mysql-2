@@ -80,6 +80,7 @@ function checkFile() {
         success: function(response) {
             if (Array.isArray(response)) {
                 settingForm(response);
+                alert('Был обнаружен уже загруженный файл parse.xls. Настройте парсер или загрузите новый файл.')
             } else {
                 console.log(response);
             }
@@ -167,3 +168,4 @@ function settingForm(response) {
     });
     $("#settingBlock").css("display", "block");
 }
+

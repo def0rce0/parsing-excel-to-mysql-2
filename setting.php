@@ -55,7 +55,7 @@ require_once 'header.php'; ?>
                             </div>
                         </div>
                         <div class="buttons d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary button-auth">Подтвердить</button>
+                            <button type="submit" onclick="checkValue()" class="btn btn-primary button-auth">Подтвердить</button>
                             <button type="button" class="btn btn-primary button-auth" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 15px;">
                                 Справка по поиску
                             </button>
@@ -89,5 +89,26 @@ require_once 'header.php'; ?>
             </div>
 		</div>
 	</div>
+<script>
+    $("form").submit(function(event) {
+    numberColumns = [];
+    $inputs = $("#numberColumns input[name='numberColumns[]']");
+
+    $inputs.each(function() {
+        const value = $(this).val().trim();
+        if (!/^\d+$/.test(value) || value < 1 || value > 4) {
+        alert("Номер столбца должен быть числом от 1 до 4");
+        event.preventDefault();
+        return;
+        }
+        if (numberColumns.includes(value)) {
+        alert("Номер столбца должен быть уникальным");
+        event.preventDefault();
+        return;
+        }
+        numberColumns.push(value);
+    });
+});
+</script>
 </body>
 </html>

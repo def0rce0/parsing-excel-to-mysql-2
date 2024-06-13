@@ -19,6 +19,7 @@ class Db {
     }
 
     public function dbSave($dbData) {
+        //сохранение данных для подключения в xml файл
         $xmlFile = '../config/dbData.xml';
         $xml = simplexml_load_file($xmlFile);
         $xml->host = $dbData['host'];

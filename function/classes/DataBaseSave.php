@@ -15,14 +15,14 @@ class DataBaseSave {
         $nameDB = $this->dbname;
         $OnOff = $this->OnOff;
         $connection = $this->connectionDB();
-        $requestDB = $connection->query("SHOW TABLES LIKE '$nameDB'");
+        $requestDB = $connection->query("SHOW TABLES LIKE '$nameDB'"); //проверка на наличие таблицы с таким же именем
         if ($requestDB->num_rows == 0) {
-            $SQL = $this->SQLCreate($nameDB);
-            $SQLInsert = $this->SQLInsert($nameDB);
+            $SQL = $this->SQLCreate($nameDB); //создание запроса таблицы
+            $SQLInsert = $this->SQLInsert($nameDB); //создание SQL запроса INSERT INTO
             $connection->query($SQL);
             $connection->query($SQLInsert);
         } else {
-            $this->SQLDelete();
+            $this->SQLDelete(); //удаление таблицы в случае если такая уже есть
             $SQL = $this->SQLCreate($nameDB);
             $SQLInsert = $this->SQLInsert($nameDB);
             $connection->query($SQL);
@@ -35,15 +35,16 @@ class DataBaseSave {
         $columnOrder = $this->numberColumns; 
         $columnName = $this->columns;
         
-        $columnTypes = [$columnName[0] => 'VARCHAR(255)', $columnName[1] => 'VARCHAR(255)', $columnName[2] => 'DECIMAL(10,2)', $columnName[3] => 'INT']; // типы данных столбцов
+        $columnTypes = [$columnName[0] => 'VARCHAR(255)', $columnName[1] => 'VARCHAR(255)', $columnName[2] => 'DECIMAL(10,2)', $columnName[3] => 'INT']; //определение типов данных столбцов. Статичны, не успел допилить их настройку
 
         $columns = [];
+        //определение какие стобцы мы добавляем
         foreach ($columnsToAdd as $key => $value) {
             if ($value == 0) {
                 $columns[$columnOrder[$key]] = '`'. $columnName[$key] . '` '. $columnTypes[$columnName[$key]];
             }
         }
-        
+        //сортировка порядка
         ksort($columns);
         
         $sql = "CREATE TABLE `$dbName` (";
@@ -86,6 +87,7 @@ class DataBaseSave {
         foreach ($data as $row) {
             $values = [];
             foreach ($columns as $key => $column) {
+                //костыль
                 if($key == 0) {
                     $key = 'A';
                 }

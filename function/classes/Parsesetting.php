@@ -21,6 +21,7 @@ class Parsesetting {
     }
 
     function translit($s) {
+        //изменение кириллицы на латиницу для корректной работы с БД
         $s = (string) $s; 
         $s = trim($s); 
         $s = function_exists('mb_strtolower') ? mb_strtolower($s) : strtolower($s); 
